@@ -25,28 +25,32 @@
    Nazwy zmiennych zostały z poprzedniego projektu: --clay to kolor akcentu
    (przyciski, wyróżnienia), --night ciemne tło stopki. Warianty palet niżej. */
 :root {
-  /* Paleta A: grafit i ciemny niebieski (propozycja Codex, 2026-11-21).
-     Kontrasty (WCAG 2.2): tekst ≥ 12,7:1, tekst pomocniczy ≥ 6,6:1, akcent ≥ 7,9:1,
-     przycisk 8,3:1, obrys pól ≥ 3,7:1, fokus ≥ 5,8:1, stopka 14:1. */
-  --bg: #F3F6F7;
-  --sand: #E4EBEE;
+  /* Paleta domyślna „Grafit” (2026-11-21): neutralne szarości, grafitowe przyciski
+     i jeden ciepły, ochrowy akcent tylko w elementach dekoracyjnych (--deco:
+     punktory, znaczniki, ikona przy telefonie; nigdy w tekście).
+     Kontrasty (WCAG 2.2): tekst ≥ 12,9:1, tekst pomocniczy ≥ 6,5:1, linki ≥ 10:1,
+     przycisk 13:1, obrys pól ≥ 3,8:1, fokus ≥ 5,5:1, stopka 15:1. */
+  --bg: #F4F4F1;
+  --sand: #E8E8E3;
   --surface: #FFFFFF;
-  --ink: #19262D;
-  --ink-2: #40535C;
-  --clay: #145565;
-  --clay-hover: #0F4452;
-  --clay-text: #114B5A;
-  --clay-soft: #DCECEF;
+  --ink: #1E2225;
+  --ink-2: #4A5056;
+  --clay: #2C3237;
+  --clay-hover: #16191C;
+  --clay-text: #2C3237;
+  --clay-soft: #DFE5EA;
   --on-clay: #FFFFFF;
-  --line: #CDD9DE;
-  --field: #657985;
-  --focus: #075A9C;
-  --night: #172830;
-  --cream: #F3F7F8;
-  --cream-2: #C9D6DB;
-  --photo-a: #DCE5E9;
-  --photo-b: #D2DDE2;
-  --photo-c: #C9DCE1;
+  --deco: #D69A1E;
+  --on-deco: #1E2225;
+  --line: #D6D7D1;
+  --field: #6E747A;
+  --focus: #1F5C99;
+  --night: #1A1D20;
+  --cream: #F4F4F1;
+  --cream-2: #C5C9CC;
+  --photo-a: #E5E5E0;
+  --photo-b: #DBDBD5;
+  --photo-c: #ECE3CF;
   --err: #9E2F2A;
   --err-bg: #FBE9E6;
   --ok: #2F5D3A;
@@ -75,44 +79,69 @@
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
   --topbar-h: 3.5rem;
 }
-/* Paleta B: ciepły kamień i cegła (propozycja Codex); pasuje, jeśli dominują
-   wykończenia wnętrz. Tekst ≥ 12:1, akcent ≥ 7,4:1, przycisk 7,8:1, pola ≥ 4:1. */
-html[data-palette="b"] {
-  --bg: #F7F4EF;
-  --sand: #EEE5D8;
-  --surface: #FFFCF7;
-  --ink: #272620;
-  --ink-2: #514A40;
-  --clay: #853D25;
-  --clay-hover: #6E321E;
-  --clay-text: #75321D;
-  --clay-soft: #F4E1D5;
-  --line: #DFD3C3;
-  --field: #796C5C;
+/* W pozostałych paletach akcent dekoracyjny = kolor przycisku */
+html[data-palette="granat"], html[data-palette="cegla"], html[data-palette="pomarancz"] { --deco: var(--clay); --on-deco: var(--on-clay); }
+
+/* „Grafit i granat” (dawna A od Codex, dopracowana: zamiast morskiego granat,
+   tła mniej niebieskie). Tekst ≥ 13:1, linki ≥ 7,8:1, przycisk 8,9:1, pola ≥ 4:1, fokus ≥ 5,1:1. */
+html[data-palette="granat"] {
+  --bg: #F3F5F8;
+  --sand: #E3E9F0;
+  --surface: #FFFFFF;
+  --ink: #18212A;
+  --ink-2: #45505C;
+  --clay: #1D4C7A;
+  --clay-hover: #163B60;
+  --clay-text: #1A4672;
+  --clay-soft: #DEE8F3;
+  --line: #CED7E0;
+  --field: #66727F;
+  --focus: #0B5FB0;
+  --night: #141E28;
+  --cream: #F3F5F8;
+  --cream-2: #C2CDD9;
+  --photo-a: #DCE3EA;
+  --photo-b: #D2DBE4;
+  --photo-c: #CCDCE9;
+}
+/* „Kamień i cegła” (dawna B od Codex, dopracowana: cieplejsza cegła, mniej żółte tła).
+   Tekst ≥ 12:1, linki ≥ 7:1, przycisk 7,5:1, pola ≥ 4:1, fokus ≥ 6,5:1. */
+html[data-palette="cegla"] {
+  --bg: #F6F3EE;
+  --sand: #ECE4D8;
+  --surface: #FFFDF9;
+  --ink: #26241F;
+  --ink-2: #524A40;
+  --clay: #8E3B22;
+  --clay-hover: #74301C;
+  --clay-text: #7C331D;
+  --clay-soft: #F3E0D3;
+  --line: #DED3C4;
+  --field: #7A6D5D;
   --focus: #235273;
-  --night: #292822;
-  --cream: #F8F2E8;
+  --night: #2A2621;
+  --cream: #F8F3EA;
   --cream-2: #D9D0C2;
   --photo-a: #EDE4D8;
   --photo-b: #E5DACB;
   --photo-c: #EBD5C6;
 }
-/* Paleta C: grafit i spalony pomarańcz (propozycja Claude): „narzędziowy”
-   akcent bez krzykliwej żółci. Tekst ≥ 13:1, akcent ≥ 5,6:1, przycisk 5,5:1, pola ≥ 3,8:1. */
-html[data-palette="c"] {
+/* „Grafit i pomarańcz” (propozycja Claude). Mały tekst w kolorze --clay-text, nie --clay
+   (przycisk na tle --sand ma tylko 4,6:1). Tekst ≥ 13:1, linki ≥ 5,6:1, przycisk 5,6:1, pola ≥ 3,8:1. */
+html[data-palette="pomarancz"] {
   --bg: #F5F5F3;
   --sand: #E9E8E4;
   --surface: #FFFFFF;
   --ink: #1E2124;
   --ink-2: #4A4F55;
-  --clay: #B5440F;
-  --clay-hover: #9A390C;
+  --clay: #B3430F;
+  --clay-hover: #97380B;
   --clay-text: #9C3A0C;
   --clay-soft: #F8E3D6;
   --line: #D7D6D1;
   --field: #6F757B;
   --focus: #1F5C99;
-  --night: #14171A;
+  --night: #16191C;
   --cream: #F5F5F3;
   --cream-2: #C8CBCF;
   --photo-a: #E6E5E1;
@@ -205,7 +234,7 @@ a:hover { text-decoration-thickness: 2px; }
 }
 .nav-list a { padding-inline: 0.5rem; }
 .nav-list { margin-left: -0.5rem; }
-.nav-list a:hover { text-decoration: underline; text-decoration-thickness: 2px; text-decoration-color: var(--clay); text-underline-offset: 0.35em; }
+.nav-list a:hover { text-decoration: underline; text-decoration-thickness: 2px; text-decoration-color: var(--deco); text-underline-offset: 0.35em; }
 
 /* ---------- Przyciski ---------- */
 .btn {
@@ -278,7 +307,7 @@ main { display: block; }
 .service-ico { display: grid; place-items: center; width: 3rem; height: 3rem; border-radius: var(--radius-m); background: var(--clay-soft); color: var(--clay-text); }
 .plain-list { margin: 0; padding: 0; list-style: none; display: grid; gap: 0.375rem; }
 .plain-list li { position: relative; padding-left: 1.375rem; }
-.plain-list li::before { content: ""; position: absolute; left: 0.125rem; top: 0.68em; width: 0.5rem; height: 0.5rem; border-radius: 1px; background: var(--clay); }
+.plain-list li::before { content: ""; position: absolute; left: 0.125rem; top: 0.68em; width: 0.5rem; height: 0.5rem; border-radius: 1px; background: var(--deco); }
 .callout {
   display: flex; gap: 0.75rem; align-items: flex-start;
   margin-top: var(--space-m); padding: 1rem 1.25rem; border-radius: var(--radius-m);
@@ -357,7 +386,7 @@ main { display: block; }
   background: var(--ink); color: var(--surface); text-decoration: none;
 }
 .call-card:hover { background: var(--night); }
-.call-ico { display: grid; place-items: center; flex: none; width: 2.75rem; height: 2.75rem; border-radius: var(--radius-m); background: var(--clay); color: var(--on-clay, #fff); }
+.call-ico { display: grid; place-items: center; flex: none; width: 2.75rem; height: 2.75rem; border-radius: var(--radius-m); background: var(--deco); color: var(--on-deco); }
 .call-card strong { display: block; font-family: var(--font-display); font-size: var(--step-2); line-height: 1.1; font-variant-numeric: tabular-nums; }
 .call-card small { font-size: var(--step--1); opacity: 0.9; }
 .contact-lines { margin: 0; padding: 0; list-style: none; display: grid; gap: var(--space-s); }
@@ -493,7 +522,7 @@ body:has(.mobile-cta) .site-footer { padding-bottom: calc(var(--space-l) + 4rem)
 
 /* ---------- Poprawki po przeglądzie Codex (2026-11-21) ---------- */
 /* Link „Przejdź do treści” pojawia się na ciemnym pasku: jasna obwódka (kontrast ≥ 3:1) */
-.skip-link:focus-visible { outline-color: var(--cream); outline-offset: 2px; }
+.skip-link:focus-visible { outline-color: var(--cream); outline-offset: -5px; }
 /* Tytuły kart i kroków lżejsze niż nagłówki sekcji */
 h3 { font-weight: 600; }
 /* Dolny pasek na telefonie nie może zasłaniać elementu z fokusem ani celu kotwicy (WCAG 2.4.11) */
@@ -501,4 +530,4 @@ h3 { font-weight: 600; }
   html { scroll-padding-bottom: calc(4.5rem + env(safe-area-inset-bottom)); }
 }
 .hero-area { margin-top: var(--space-s); font-weight: 600; color: var(--ink); }
-.hero-area::before { content: ""; display: inline-block; width: 0.625rem; height: 0.625rem; margin-right: 0.5rem; border-radius: 1px; background: var(--clay); vertical-align: 0.05em; }
+.hero-area::before { content: ""; display: inline-block; width: 0.625rem; height: 0.625rem; margin-right: 0.5rem; border-radius: 1px; background: var(--deco); vertical-align: 0.05em; }

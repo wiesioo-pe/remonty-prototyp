@@ -213,7 +213,7 @@
     render();
   }
 
-  // --- Warianty kolorów do porównania (też przez ?palette=a|b|c) ---
+  // --- Warianty kolorów do porównania (też przez ?palette=grafit|granat|cegla|pomarancz) ---
   function initVariants() {
     var root = document.documentElement;
     var params = new URLSearchParams(window.location.search);
